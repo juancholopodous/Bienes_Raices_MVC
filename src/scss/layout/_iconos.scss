@@ -1,0 +1,17 @@
+.icono {
+    text-align: center;
+    img {
+        height: 10rem;
+    }
+    h3 {
+        text-transform: uppercase; /* Texto en mayúsc */
+    }
+}
+@include tablet { /* Cuando llegamos al tamaño de Tablet */
+    .iconos-nosotros { /* Se aplica el grid para 3 columnas */
+        @include grid (3, 2rem);
+    }
+    .icono {
+        padding: 0 1.5rem; /* Separación entre elementos */
+    }
+}

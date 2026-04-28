@@ -1,0 +1,95 @@
+.derecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+        align-items: flex-end;
+    }
+    .dark-mode-boton {
+        margin: 3rem 0;
+        width: 3rem;
+        height: 3rem; 
+        
+        filter: invert(100%); /*Inversion del color*/
+        &:hover {cursor: pointer;} /*Agrega un puntero sobre el elemento*/
+
+        @include tablet { margin-top: 0; }
+    }
+}
+
+
+.barra {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    align-items: center;
+
+    img { /* Necesario para que el svg del Logo no sea 0x0 y se vea */
+        max-width: 100%;
+        width: 28rem;
+        height: auto;
+    }
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+.navegacion {
+    visibility: hidden;
+    opacity: 0; /* 0% visible */
+    height: 0;
+    transition: visibility 0.3s ease-in-out, opacity 0.2s linear, height .5s linear;
+
+    @include tablet {
+        display: flex;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    a {
+        color: $blanco;
+        text-decoration: none;
+        font-size: 2.2rem;
+        display: block;
+        text-align: center;
+
+        @include tablet {
+            margin-right: 2rem;
+            font-size: 1.8rem;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+/* MENÚ DE HAMBURGUESA */
+
+.mobile-menu {
+    @include tablet {
+        display: none;
+    }
+    img {
+        margin: 2rem 0;
+        width: 4rem;
+    }
+}
+
+.mostrar {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+        flex-direction: row;
+    }
+}
+.mostrar {
+    visibility: visible;
+    opacity: 1; /* Opacidad al 100% */
+    height: auto;
+}

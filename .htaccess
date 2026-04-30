@@ -1,5 +1,11 @@
-DirectoryIndex index.php
+IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
  
-RewriteEngine On
-RewriteRule ^$ public/index.php [L]
-RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+    # Redirigir todo el tráfico a la carpeta public, excepto si ya está en public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+ 
+    # Descomentar si quieres ver la lista de archivos en carpetas (opcional)
+    # Options +Indexes
+</IfModule>

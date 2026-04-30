@@ -52,7 +52,7 @@ class Router {
             // URL Existe y hay una función asociada.
             call_user_func($fn, $this);
         } else {
-            echo "Error 404";   
+            echo "Error 404 desde función comprobarRutas";   
         }
     }
 

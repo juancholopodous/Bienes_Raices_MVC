@@ -3,6 +3,7 @@
 use Dotenv\Dotenv;
 use Model\ActiveRecord;
 require __DIR__ . '/../vendor/autoload.php'; // Agrega automaticamente las clases en este app.php
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 

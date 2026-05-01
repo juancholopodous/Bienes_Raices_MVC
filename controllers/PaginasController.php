@@ -1,20 +1,26 @@
 <?php
 namespace Controllers;
 
-use Model\Propiedad;
 use MVC\Router;
+use Model\Propiedad;
 use PHPMailer\PHPMailer\PHPMailer;
+use Model\Entrada;
+use Model\Admin;
 
 class PaginasController {
 
     public static function index(Router $router) {
         
         $propiedad = Propiedad::get(3);
+        $entradas = Entrada::get(3);
+        $usuarioId = Admin::all();
         $inicio = true; //clase inicio necesaria para menú
 
         $router->render('paginas/index', [
             'propiedad' => $propiedad,
-            'inicio' => $inicio
+            'entradas' => $entradas,
+            'inicio' => $inicio,
+            'usuarioId' => $usuarioId
         ]);
     }
 
@@ -23,11 +29,26 @@ class PaginasController {
     }
 
     public static function blog(Router $router) {       
-        $router->render('paginas/blog'); // No necesitamos pasarle el "[ ]" ya que no pasamos nada en el arreglo.
+        $entradas = Entrada::all();
+        $usuarioId = Admin::all();
+
+        $router->render('paginas/blog', [
+            'entradas' => $entradas,
+            'usuarioId' => $usuarioId
+        ]);
     }
 
     public static function entrada(Router $router) {        
-        $router->render('paginas/entrada'); // No necesitamos pasarle el "[ ]" ya que no pasamos nada en el arreglo.
+        $id = validarORedireccionar('/blog');
+
+        // Buscar entradas blog por su id
+        $entrada = Entrada::find($id);
+        $usuarioId = Admin::all();
+        
+        $router->render('paginas/entrada', [
+            'entrada' => $entrada,
+            'usuarioId' => $usuarioId
+        ]);
     }
 
     public static function propiedades(Router $router) {

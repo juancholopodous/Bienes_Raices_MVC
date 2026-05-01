@@ -6,16 +6,18 @@ class Admin extends ActiveRecord {
     
     // Base de datos - Son "protected" porque solo accedemos dentro de esta clase
     protected static $tabla = 'usuarios';
-    protected static $columnasDB = ['id', 'email', 'password',];
+    protected static $columnasDB = ['id', 'email', 'password', 'nombre'];
 
     public $id;
     public $email;
     public $password;
+    public $nombre;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
         $this->email = $args['email'] ?? '';
         $this->password = $args['password'] ?? '';
+        $this->nombre = $args['nombre'] ?? '';
     }
 
     public function validar() {
@@ -24,6 +26,9 @@ class Admin extends ActiveRecord {
         }
         if (!$this->password) {
             self::$errores[] = 'El password es incorrecto'; // $errores está en ActiveRecord
+        }
+        if (!$this->nombre) {
+            self::$errores[] = 'El nombre es incorrecto'; // $errores está en ActiveRecord
         }
 
         return self::$errores;

@@ -43,6 +43,10 @@ class ActiveRecord {
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
 
+        echo "<br>";
+        var_dump($atributos);
+        echo "</pre>";
+
         /* $query = " INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ( '$this->titulo', '$this->precio', '$this->imagen', '$this->descripcion', '$this->habitaciones', '$this->wc', '$this->estacionamiento', '$this->creado', '$this->vendedores_id'); ";  */
 
         $resultado = self::$db->query($query);

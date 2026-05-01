@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\EntradaController;
 use MVC\Router;
 use Controllers\PropiedadController;
 use Controllers\VendedorController;
@@ -27,6 +28,14 @@ $router->post('/vendedores/crear', [VendedorController::class, 'crear']); // POS
 $router->get('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar']); // POST para Formularios
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']); // POST para Formularios
+
+
+$router->get('/blog/crear', [EntradaController::class, 'crear']);
+$router->post('/blog/crear', [EntradaController::class, 'crear']);
+$router->get('/blog/actualizar', [EntradaController::class, 'actualizar']);
+$router->post('/blog/actualizar', [EntradaController::class, 'actualizar']);
+$router->post('/blog/eliminar', [EntradaController::class, 'eliminar']);
+
 
 
 /* PÁGINAS PUBLICAS */

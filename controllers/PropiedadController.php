@@ -4,6 +4,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Propiedad; // Para establecer la conexión a la BD
 use Model\Vendedor;
+use Model\Entrada;
 use Intervention\Image\ImageManager as Image;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -14,6 +15,7 @@ class PropiedadController {
 
         $propiedades = Propiedad::all(); // el "::" es porque el método all es static.
         $vendedores = Vendedor::all();
+        $entradas = Entrada::all();
 
         // Muestra mensaje condicional
         $resultado = $_GET['resultado'] ?? null;
@@ -21,7 +23,8 @@ class PropiedadController {
         $router->render('propiedades/admin', [
             'propiedades' => $propiedades,
             'vendedores' => $vendedores,
-            'resultado' => $resultado
+            'resultado' => $resultado,
+            'entradas' => $entradas
         ]);
     }
     // "Router $router" evita que perdamos la referencia que arrastramos desde router.php; de este modo puede ser utilizado por todas las rutas del index

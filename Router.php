@@ -29,6 +29,9 @@ class Router {
             '/vendedores/crear',
             '/vendedores/actualizar',
             '/vendedores/eliminar',
+            '/blog/crear',
+            '/blog/actualizar',
+            '/blog/eliminar',
         ];
 
         $urlActual = $_SERVER['PATH_INFO'] ?? '/';
@@ -51,7 +54,7 @@ class Router {
             // URL Existe y hay una función asociada.
             call_user_func($fn, $this);
         } else {
-            echo "Error 404 desde función comprobarRutas";   
+            $this->e404();   
         }
     }
 
@@ -69,5 +72,15 @@ class Router {
         $contenido = ob_get_clean(); // Limpiamos la memoria
 
         include __DIR__ . '/views/layout.php';
+    }
+
+    //Redireccionar una pagina de Error 404
+    public function e404() {      
+        ob_start(); // Inicia el almacenamiento en memoria
+        include __DIR__ . "/views/error404.php";
+
+        $contenido = ob_get_clean(); // Limpia la memoria
+
+        include __DIR__ . "/views/layout.php";  
     }
 }

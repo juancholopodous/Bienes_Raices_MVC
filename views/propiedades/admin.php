@@ -16,7 +16,7 @@
     <?php } ?>
     
     <h2>Propiedades</h2>
-    <a href="/propiedades/crear" class="boton boton-verde">Nueva Propiedad</a>
+    <a href="/propiedades/crear" class="boton boton-crear">Nueva Propiedad</a>
 
     <table class="propiedades">
         <thead>
@@ -51,7 +51,7 @@
 
     <h2>Vendedores</h2>
 
-    <a href="/vendedores/crear" class="boton boton-amarillo">Nuevo Vendedor</a>
+    <a href="/vendedores/crear" class="boton boton-crear">Nuevo Vendedor</a>
 
     <table class="propiedades">
         <thead>
@@ -80,6 +80,41 @@
                     <a href="/vendedores/actualizar?id=<?php echo $vendedor->id; ?>" class="boton-azul-block">Actualizar</a>
                 </td>
             </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <h2>Administrador de Blogs</h2>
+
+    <a href="/blog/crear" class="boton boton-crear">Nueva Entrada</a>
+
+    <table class="propiedades">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Imagen</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>  <!--Mostrar los resultados-->
+            <?php foreach( $entradas as $entrada): ?>
+                <tr>
+                    <td><?php echo $entrada->id; ?></td>
+                    <td><?php echo $entrada->titulo; ?></td>
+                    <td><img src="/imagenes/<?php echo $entrada->imagen; ?>" class="imagen-tabla" alt=""></td>
+                    <td><?php echo $entrada->descripcion; ?></td>
+                    <td>
+                        <form method="POST" class="w-100" action="/blog/eliminar">
+                            <input type="hidden" name="id" value="<?php echo $entrada->id; ?>">
+                            <input type="hidden" name="tipo" value="propiedad">
+                            <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="/blog/actualizar?id=<?php echo $entrada->id; ?>" class="boton-azul-block">Actualizar</a>
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

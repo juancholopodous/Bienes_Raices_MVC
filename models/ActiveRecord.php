@@ -49,7 +49,7 @@ class ActiveRecord {
         
         //Mensaje de éxito
         if ($resultado) {
-            header('Location: /admin?resultado=1'); // Agregamos "Public"
+            header('Location: /admin?resultado=1');
         }
     }
 
@@ -88,7 +88,7 @@ class ActiveRecord {
 
         if ($resultado) {
             $this->borrarImagen();
-            header('location: /admin?resultado=3'); // Agregamos "public"
+            header('location: /admin?resultado=3');
         }
     }
 
@@ -164,6 +164,17 @@ class ActiveRecord {
         
         $resultado = self::consultarSQL($query);
 
+        return $resultado;
+    }
+    
+    // Consulta si existe un determinado valor en una determinada columna 
+    public static function where($columna, $valor) {
+        // Aquí hacemos la consulta dinámica
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
+        
+        $resultado = self::consultarSQL($query);
+        
+        // Devolvemos el resultado (que suele ser un array de objetos o false)
         return $resultado;
     }
 

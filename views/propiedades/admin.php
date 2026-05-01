@@ -9,6 +9,8 @@
             <p class="alerta exito actualizado">Registro Actualizado Correctamente</p>
         <?php elseif ( intval( $resultado ) === 3 ): ?>
             <p class="alerta exito eliminado">Registro Eliminado Correctamente</p>
+        <?php elseif ( intval( $resultado ) === 4 ): ?>
+            <p class="alerta exito eliminado">No se puede eliminar: Este vendedor tiene propiedades asignadas</p>
         <?php endif; ?>
         
     <?php } ?>

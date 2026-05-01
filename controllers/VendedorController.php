@@ -99,21 +99,32 @@ class VendedorController {
         ]);
     }
 
-    public static function eliminar() { // "eliminar" no requiere la utilización de router, ya que usamos ese método para renderizar las vistas.
+    public static function eliminar() {
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
-            // Validar id
+            
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);
+            $tipo = $_POST['tipo'];
 
-            if ($id) {
-                $tipo = $_POST['tipo'];
+            if ($id && validarTipoContenido($tipo)) {
+                
+                // Busca si tiene propiedades asociadas con Where donde Columna = 'vendedores_id' y Valor = $id
+                $propiedades = Propiedad::where('vendedores_id', $id);
 
-                if (validarTipoContenido($tipo)) {
-                    $vendedores = Vendedor::find($id);
-                    $vendedores->eliminar();
+                if (!empty($propiedades)) {
+                    // Si tiene propiedades, no podemos eliminar
+                    header('Location: /admin?resultado=4');
+
+                    exit; // Detenemos la ejecución
                 }
+
+                // Si llega aquí, es que no tiene propiedades y procedemos a...
+                $vendedor = Vendedor::find($id);
+                $vendedor->eliminar();
+                
+                // Redirigir al admin con mensaje de éxito
+                header('Location: /admin?resultado=3');
             }
         }
     }

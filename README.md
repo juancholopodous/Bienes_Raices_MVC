@@ -13,11 +13,11 @@ La aplicación se apoya en una base de datos relacional MySQL, donde la lógica 
 - **Control de Acceso:** Se ha implementado una capa de seguridad condicional que restringe la visualización y ejecución de acciones (Crear, Actualizar, Eliminar) exclusivamente a usuarios administradores.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/juancholopodous/Bienes_Raices_MVC/main/Media_GitHub/Portada2.gif" style="width:100%;"/>
+  <img src="https://raw.githubusercontent.com/juancholopodous/Bienes_Raices_MVC/main/Media%20GitHub/Portada2.gif" style="width:100%;"/>
 </div>
 
 ## 🛠️ Tecnologías y Dependencias
-Para lograr automatización y seguridad, el proyecto hace uso de las siguientes librerías de <span style="color:blue">Composer</span>:
+Para lograr automatización y seguridad, el proyecto hace uso de las siguientes librerías de <span style="color:#007acc;">Composer</span>:
 
 - `intervention/image`: Manipulación y redimensionamiento de imágenes cargadas al sistema.
 

@@ -58,5 +58,5 @@ Para ejecutar la versión completa con la lógica de MVC, el sistema de base de 
 <br>
 
 <div align="right">
-Desarrollado con arquitectura MVC por [Juan S. Roth]
+Desarrollado con arquitectura MVC por <a href="https://github.com/juancholopodous">Juan S Roth</a>.
 </div>

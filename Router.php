@@ -33,8 +33,13 @@ class Router {
             '/blog/actualizar',
             '/blog/eliminar',
         ];
-
-        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        
+        if (isset($_SERVER['PATH_INFO'])) {
+            $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        } else {
+            $urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
+        }
+        
         $metodo = $_SERVER['REQUEST_METHOD'];
 
         if ($metodo === 'GET') {

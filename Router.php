@@ -10,6 +10,7 @@ class Router {
     public function get($url, $fn) {
         $this->rutasGET[$url] = $fn;
     }
+    
     public function post($url, $fn) {
         $this->rutasPOST[$url] = $fn;
     }

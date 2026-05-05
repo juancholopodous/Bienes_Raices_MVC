@@ -9,7 +9,7 @@
 		
 		<div class="contant_box_404">
 		<h3 class="h2 text-center">
-		Ops! la pagina que buscas no existe!
+		La pagina que buscas no existe!
 		</h3>		
 	</div>
 		</div>

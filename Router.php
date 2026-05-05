@@ -35,12 +35,13 @@ class Router {
             '/blog/eliminar',
         ];
         
-        if (isset($_SERVER['PATH_INFO'])) {
-            $urlActual = $_SERVER['PATH_INFO'] ?? '/';
-        } else {
-            $urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
-        }
-        
+        $urlActual = $_SERVER['REQUEST_URI'] ?? '/';
+    	$urlActual = strtok($urlActual, '?');
+
+   		if ($urlActual === '') {
+        $urlActual = '/';
+    	}
+
         $metodo = $_SERVER['REQUEST_METHOD'];
 
         if ($metodo === 'GET') {

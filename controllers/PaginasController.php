@@ -4,6 +4,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Propiedad;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use Model\Entrada;
 use Model\Admin;
 

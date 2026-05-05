@@ -14,7 +14,7 @@ La aplicación se apoya en una base de datos relacional MySQL, donde la lógica 
 <br>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/juancholopodous/Bienes_Raices_MVC/main/Media%20GitHub/Portada2.gif" style="width:100%;"/>
+  <a href="https://bienesraicesmvc-juancholopodous.sao.dom.my.id/"><img src="https://raw.githubusercontent.com/juancholopodous/Bienes_Raices_MVC/main/Media%20GitHub/Portada2.gif" style="width:100%;"/>
 </div>
 
 <br>

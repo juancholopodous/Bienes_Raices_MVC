@@ -8,25 +8,37 @@ document.addEventListener ('DOMContentLoaded', function() {
 });
 
 function darkMode() {
-    const prefiereDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    if (prefiereDarkMode.matches) {
+    const prefiereDarkMode = window.matchMedia('(prefers-color-scheme: dark)'); // Con ".matchMedia" detección automática del sistema
+    const modoGuardado = localStorage.getItem('modoOscuro'); //Verificamos si ya existe una preferencia guardada en localStorage
+
+    // Lógica de inicio: ¿Qué modo aplicar al cargar?
+    if (modoGuardado === 'true') {
         document.body.classList.add('dark-mode');
-    } else {
+    } else if (modoGuardado === 'false') {
         document.body.classList.remove('dark-mode');
+    } else if (prefiereDarkMode.matches) {  // Si no hay nada en localStorage, seguimos la preferencia del sistema
+        document.body.classList.add('dark-mode');
     }
     
-    prefiereDarkMode.addEventListener('change', function() {
-        if (prefiereDarkMode.matches) {
-        document.body.classList.add('dark-mode');
-        } else {
-        document.body.classList.remove('dark-mode');
+    //Escuchamos al sistema solo si NO hay preferencia manual:
+    prefiereDarkMode.addEventListener('change', function(e) {
+        if (localStorage.getItem('modoOscuro') === null) {
+            if (e.matches) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
         }
     });
 
+    // Listener para el botón de cambio manual
     const botonDarkMode = document.querySelector('.dark-mode-boton');
     botonDarkMode.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
+
+        // Guardamos el nuevo estado en localStorage
+        const estaOscuro = document.body.classList.contains('dark-mode');
+        localStorage.setItem('modoOscuro', estaOscuro);
     });
 }
 

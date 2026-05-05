@@ -81,58 +81,60 @@ class PaginasController {
             $respuestas = $_POST['contacto'];
             
             // Crear una nueva instancia de PHPMailer
-            $mail = new PHPMailer();
+            $mail = new PHPMailer(true);
 
-            // Configuramos SMTP -- Protocolo para envío de Emails --
-            $mail->isSMTP();
-            $mail->Host = $_ENV['EMAIL_HOST'];
-            $mail->SMTPAuth = true;
-            $mail->Username = $_ENV['EMAIL_USER'];
-            $mail->Password = $_ENV['EMAIL_PASS'];
-            $mail->SMTPSecure = 'tls'; // "tls" es el tipo de encriptación
-            $mail->Port = $_ENV['EMAIL_PORT'];
+        	try {
+            	// Configuramos SMTP -- Protocolo para envío de Emails --
+            	$mail->isSMTP();
+            	$mail->Host = $_ENV['EMAIL_HOST'];
+            	$mail->SMTPAuth = true;
+            	$mail->Username = $_ENV['EMAIL_USER'];
+            	$mail->Password = $_ENV['EMAIL_PASS'];
+            	$mail->SMTPSecure = 'tls'; // "tls" es el tipo de encriptación
+            	$mail->Port = $_ENV['EMAIL_PORT'];
 
-            // Configurar el contenido del mail
-            $mail->setFrom('admin@bienesraices.com');
-            $mail->addAddress('admin@bienesraices.com', 'BienesRaices.com');
-            $mail->Subject = 'Tiene un Nuevo Mensaje';
+            	// Configurar el contenido del mail
+            	$mail->setFrom('admin@bienesraices.com');
+            	$mail->addAddress('admin@bienesraices.com', 'BienesRaices.com');
+            	$mail->Subject = 'Tiene un Nuevo Mensaje';
 
-            // Habilitar HTML
-            $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8'; // Habilita letras asentuadas y demás
+            	// Habilitar HTML
+            	$mail->isHTML(true);
+            	$mail->CharSet = 'UTF-8'; // Habilita letras asentuadas y demás
             
-            // Definir el contenido
-            $contenido = '<html>'; // La expresión ".=" es para NO sobreescribir un valor; en su lugar se concatena
-            $contenido .= '<p> --- Tienes un nuevo mensaje --- </p>';
-            $contenido .= '<p>De - Nombre: '. $respuestas['nombre'] .' </p>';
-            $contenido .= '<p>Preferencias de vía de Contacto: '. $respuestas['contacto'] .'</p>';
+            	// Definir el contenido
+            	$contenido = '<html>'; // La expresión ".=" es para NO sobreescribir un valor; en su lugar se concatena
+            	$contenido .= '<p> --- Tienes un nuevo mensaje --- </p>';
+            	$contenido .= '<p>De - Nombre: '. $respuestas['nombre'] .' </p>';
+            	$contenido .= '<p>Preferencias de vía de Contacto: '. $respuestas['contacto'] .'</p>';
 
-            // Enviamos según vía de Contacto Seleccionada
-            if ($respuestas['contacto'] === 'telefono') {
+            	// Enviamos según vía de Contacto Seleccionada
+            	if ($respuestas['contacto'] === 'telefono') {
 
-                $contenido .= '<p>Teléfono: '. $respuestas['telefono'] .'</p>';
-                $contenido .= '<p>Fecha para ser contactado: '. $respuestas['fecha'] .'</p>';
-                $contenido .= '<p>Preferentemente al rededor de la hora: '. $respuestas['hora'] .'</p>';
-            } else {
-                // Si la vía es email
-                $contenido .= '<p>Email: '. $respuestas['email'] .'</p>';
-            }
+                	$contenido .= '<p>Teléfono: '. $respuestas['telefono'] .'</p>';
+                	$contenido .= '<p>Fecha para ser contactado: '. $respuestas['fecha'] .'</p>';
+                	$contenido .= '<p>Preferentemente al rededor de la hora: '. $respuestas['hora'] .'</p>';
+            	} else {
+                	// Si la vía es email
+                	$contenido .= '<p>Email: '. $respuestas['email'] .'</p>';
+            	}
 
-            $contenido .= '<p>Vende o Compra: '. $respuestas['tipo'] .'</p>';
-            $contenido .= '<p>Mensaje: '. $respuestas['mensaje'] .'</p>';
-            $contenido .= '<p>Precio o Presupuesto: $'. $respuestas['precio'] .'</p>';
-            $contenido .= '</html>';
+            	$contenido .= '<p>Vende o Compra: '. $respuestas['tipo'] .'</p>';
+            	$contenido .= '<p>Mensaje: '. $respuestas['mensaje'] .'</p>';
+            	$contenido .= '<p>Precio o Presupuesto: $'. $respuestas['precio'] .'</p>';
+            	$contenido .= '</html>';
             
-            $mail->Body = $contenido; //Establecemos que el cuerpo del mail tenga el valor definido en $contenido
-            $mail->AltBody = 'Esto es texto alternativo sin HTML';
+            	$mail->Body = $contenido; //Establecemos que el cuerpo del mail tenga el valor definido en $contenido
+            	$mail->AltBody = 'Esto es texto alternativo sin HTML';
 
-            // Enviar el email
-            if ($mail->send()) {
-                $mensaje = "El mensaje fue enviado correctamente";
-            } else {
-                $mensaje = "El mensaje NO fue enviado correctamente"; 
-            }
-
+            	// Enviamos
+            	$mail->send();
+            	$mensaje = "El mensaje fue enviado correctamente";
+            
+            	} catch (Exception $e) {
+           		// AQUÍ CAPTURAMOS EL ERROR REAL
+            	$mensaje = "El mensaje NO se pudo enviar. Error: {$mail->ErrorInfo}";
+        	}         
         }
         
         $router->render('paginas/contacto', [

@@ -39,20 +39,18 @@ Cualquier cambio realizado en el panel impacta inmediatamente en la visualizaci�
 <br>
 
 ## ⚠️ Nota Importante sobre el Despliegue
-Este proyecto es una aplicación de servidor (Backend PHP + MySQL). Debido a que GitHub Pages es un servicio diseñado exclusivamente para contenido estático, no es posible alojar la funcionalidad completa del proyecto aquí.
+Este proyecto es una aplicación de servidor (Backend PHP + MySQL). Debido a que GitHub Pages es un servicio diseñado exclusivamente para contenido estático, no es posible alojar la funcionalidad completa del proyecto aquí. Por lo que el enlace lleva a los servidores de [DOM Cloud](https://domcloud.co/) donde es procesado por la plataforma, eventualmente el enlace podría caerse si las políticas de la plataforma cambian ya que la misma es de uso gratuito.
+<br>
+
+Si el servidor llega a estar caido, dejo un enlace a una versión simplificada (estática) del [proyecto](https://github.com/juancholopodous/Bienes_Raices) **Bienes Raices** con fines visuales. 
+
+<br>
+Para ejecutar la versión completa con la lógica de MVC, el sistema de base de datos y la autenticación, es necesario clonar el repositorio y correrlo en un entorno local (como XAMPP, Laragon o Docker) configurando un servidor Apache/Nginx y MySQL.
 <br>
 <br>
 
 >Dejo un archivo .env.example para quien tenga interes en probar el código, y de este modo sepa qué variables debe configurar. Además agrego un 
 >archivo con extensión SQL (base_crud.sql) en la raíz para que se pueda **importar** la estructura de la base de datos qué utilicé.
-
-<br>
-
-Por este motivo, al interactuar con el enlace proporcionado en mi perfil, accederás a una versión simplificada (estática) del [proyecto](https://github.com/juancholopodous/Bienes_Raices) **Bienes Raices** con fines visuales. 
-
-<br>
-
-Para ejecutar la versión completa con la lógica de MVC, el sistema de base de datos y la autenticación, es necesario clonar el repositorio y correrlo en un entorno local (como XAMPP, Laragon o Docker) configurando un servidor Apache/Nginx y MySQL.
 
 <br>
 <br>

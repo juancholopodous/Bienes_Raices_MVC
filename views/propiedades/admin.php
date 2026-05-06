@@ -14,7 +14,7 @@
         <?php endif; ?>
         
     <?php } ?>
-    
+            
     <h2>Propiedades</h2>
     <a href="/propiedades/crear" class="boton boton-crear">Nueva Propiedad</a>
 
@@ -37,7 +37,7 @@
                 <td> <img src="/imagenes/<?php echo $propiedad->imagen; ?>" class="imagen-tabla"></td>
                 <td>$<?php echo $propiedad->precio ?></td>
                 <td>
-                    <form method="POST" class="w-100" action="/propiedades/eliminar"> <!-- Este POST rquiere REQUEST_METHOD -->
+                    <form method="POST" class="w-100 formulario-eliminar" action="/propiedades/eliminar"> <!-- Este POST rquiere REQUEST_METHOD -->
                         <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
                         <input type="hidden" name="tipo" value="propiedad">
                         <input type="submit" class="boton-rojo-block" value="Eliminar">
@@ -72,7 +72,7 @@
                 <td> <img src="/imagenes/<?php echo $vendedor->imagen; ?>" class="imagen-tabla"></td>
                 <td><?php echo $vendedor->celular ?></td>
                 <td>
-                    <form method="POST" class="w-100" action="/vendedores/eliminar"> <!-- Este POST rquiere REQUEST_METHOD -->
+                    <form method="POST" class="w-100 formulario-eliminar" action="/vendedores/eliminar"> <!-- Este POST rquiere REQUEST_METHOD -->
                         <input type="hidden" name="id" value="<?php echo $vendedor->id; ?>">
                         <input type="hidden" name="tipo" value="vendedor">
                         <input type="submit" class="boton-rojo-block" value="Eliminar">
@@ -107,7 +107,7 @@
                     <td><img src="/imagenes/<?php echo $entrada->imagen; ?>" class="imagen-tabla" alt=""></td>
                     <td><?php echo $entrada->descripcion; ?></td>
                     <td>
-                        <form method="POST" class="w-100" action="/blog/eliminar">
+                        <form method="POST" class="w-100 formulario-eliminar" action="/blog/eliminar">
                             <input type="hidden" name="id" value="<?php echo $entrada->id; ?>">
                             <input type="hidden" name="tipo" value="propiedad">
                             <input type="submit" class="boton-rojo-block" value="Eliminar">

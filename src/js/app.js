@@ -5,6 +5,20 @@ document.addEventListener ('DOMContentLoaded', function() {
     darkMode();
 
     borrarAlerta();
+
+    const formulariosEliminar = document.querySelectorAll('.formulario-eliminar');
+
+    formulariosEliminar.forEach(formulario => {
+        formulario.addEventListener('submit', function(e) {
+            // Mostramos la alerta nativa del navegador
+            const confirmacion = confirm('¿Estás seguro de que deseas eliminar este registro? Esta acción no se puede deshacer.');
+
+            // Si el usuario presiona "Cancelar", prevenimos el envío del formulario
+            if (!confirmacion) {
+                e.preventDefault();
+            }
+        });
+    });
 });
 
 function darkMode() {

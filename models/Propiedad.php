@@ -27,7 +27,7 @@ class Propiedad extends ActiveRecord {
         $this->descripcion = $args['descripcion'] ?? '';
         $this->habitaciones = $args['habitaciones'] ?? '';
         $this->wc = $args['wc'] ?? '';
-        $this->estacionamiento = $args['estacionamiento'] ?? '';
+        $this->estacionamiento = $args['estacionamiento'] ?? 0;
         $this->creado = date('Y/m/d');
         $this->vendedores_id = $args['vendedores_id'] ?? '';
     }

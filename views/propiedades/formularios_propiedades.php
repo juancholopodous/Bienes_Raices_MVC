@@ -5,7 +5,7 @@
     <input type="text" id="titulo" name="propiedad[titulo]" placeholder="Titulo Propiedad" value="<?php echo s($propiedad->titulo); ?>">
 
     <label for="precio">precio:</label>
-    <input type="number" id="precio" name="propiedad[precio]" placeholder="Precio Propiedad" value="<?php echo s($propiedad->precio); ?>">
+    <input type="number" id="precio" name="propiedad[precio]" placeholder="Precio Propiedad" value="<?php echo s($propiedad->precio); ?>" min="0" max="99999999.99" step="0.01">
 
     <label for="imagen">imagen:</label>
     <input type="file" id="imagen" accept="image/jpeg, imag/png" name="propiedad[imagen]"> <!--accept limita el tipo de archivo-->

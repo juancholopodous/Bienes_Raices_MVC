@@ -36,7 +36,7 @@
                 </select>
 
                 <label for="Presupuesto">Precio ó Presupuesto</label>
-                <input type="number" placeholder="Tu Precio ó Presupuesto" id="Presupuesto" name="contacto[precio]" required>
+                <input type="number" placeholder="Tu Precio ó Presupuesto" id="Presupuesto" name="contacto[precio]" min="0" max="99999999.99" step="0.01" required>
             </fieldset><!-- Cierre de 2° grupo -->
 
             <fieldset>

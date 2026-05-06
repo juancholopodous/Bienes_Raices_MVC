@@ -10,7 +10,7 @@
             
             <?php foreach($usuarioId as $usuario): ?>
             <?php if($entrada->usuarioId === $usuario->id) : ?>
-                <p class="informacion-meta">Escritorio el: <span><?php echo $entrada->creado . ''; ?></span> por: <span><?php echo ($usuario->nombre); ?></span></p>
+                <p class="informacion-meta">Escrito el: <span><?php echo $entrada->creado . ''; ?></span> por: <span><?php echo ($usuario->nombre); ?></span></p>
                 <?php endif; ?>
             <?php endforeach;?>
             

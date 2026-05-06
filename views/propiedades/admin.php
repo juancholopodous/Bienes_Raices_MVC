@@ -22,10 +22,10 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Titulo</th>
+                <th>Título</th>
                 <th>Imagen</th>
                 <th>Precio</th>
-                <th>Accioines</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -60,7 +60,7 @@
                 <th>Nombre</th>
                 <th>Perfil</th>
                 <th>Celular</th>
-                <th>Accioines</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 

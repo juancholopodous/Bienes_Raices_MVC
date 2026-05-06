@@ -49,7 +49,7 @@ class Propiedad extends ActiveRecord {
         if (!$this->wc) {
             self::$errores[] = "Indica el número de baños";
         }
-        if (!$this->estacionamiento) {
+        if ( (!$this->estacionamiento) < 0) {
             self::$errores[] = "Debes indicar el número de estacionamientos";
         }
         if (!$this->vendedores_id) {
